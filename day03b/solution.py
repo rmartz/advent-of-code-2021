@@ -1,9 +1,11 @@
 import sys
 from collections import defaultdict
 
+
 def binary_to_int(binary):
-    strval = ''.join(binary)
-    return int(f'0b{strval}', 2)
+    strval = "".join(binary)
+    return int(f"0b{strval}", 2)
+
 
 def collect(iter, callback):
     groups = defaultdict(list)
@@ -20,7 +22,7 @@ def apply_bit_criteria(values, width, default: str, useMax: bool):
 
         groups = collect(values, lambda val: val[i])
 
-        if len(groups['0']) == len(groups['1']):
+        if len(groups["0"]) == len(groups["1"]):
             values = groups[default]
         elif useMax:
             values = max(groups.values(), key=len)
@@ -28,12 +30,14 @@ def apply_bit_criteria(values, width, default: str, useMax: bool):
             values = min(groups.values(), key=len)
     raise Exception("Whoops")
 
+
 def get_oxygen_rating(values, width):
-    return apply_bit_criteria(values, width, '1', True)
+    return apply_bit_criteria(values, width, "1", True)
 
 
 def get_co2_rating(values, width):
-    return apply_bit_criteria(values, width, '0', False)
+    return apply_bit_criteria(values, width, "0", False)
+
 
 input = list(sys.stdin)
 width = len(input[0])
