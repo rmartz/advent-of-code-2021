@@ -10,5 +10,4 @@ Cargo.lock
 **/*.rs.bk
 
 # Puzzle input files
-input.txt
-example.txt
+*.txt
